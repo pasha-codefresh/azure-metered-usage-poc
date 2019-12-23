@@ -1,0 +1,16 @@
+{
+  "name": "cf-azure-metered-usage",
+  "version": "1.5.0",
+  "description": "Codefresh Azure metered usage",
+  "scripts": {},
+  "engines": {
+    "node": "10.15.3"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "lodash": "^4.17.15",
+    "request-promise": "^4.2.5",
+    "request": "^2.88.0",
+    "randomstring": "^1.1.5"
+  }
+}
