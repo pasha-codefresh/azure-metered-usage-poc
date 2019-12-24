@@ -3,8 +3,13 @@ const app = express();
 
 const controller = require('./azure/azure.controller');
 
-app.get('/', function (req, res) {
-    res.send('Hello World!');
+app.get('/publish', async (request, response, next) => {
+    try {
+        await controller.publishUsage(request, response);
+        next();
+    } catch (err) {
+        next(err);
+    }
 });
 
 app.post('/api/azure/hook', async (request, response, next) => {

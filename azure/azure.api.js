@@ -2,7 +2,7 @@
 const rp = require('request-promise');
 const randomstring = require('randomstring');
 
-const API_URI = 'https://marketplaceapi.microsoft.com/api/saas';
+const API_URI = 'https://marketplaceapi.microsoft.com/api/';
 const API_VERSION = '2018-08-31';
 
 class AzureApi {
@@ -40,7 +40,7 @@ class AzureApi {
 
     resolveSubscriptionByMarketplaceToken(marketPlaceToken) {
         return this._call({
-            endpoint: '/subscriptions/resolve',
+            endpoint: '/saas/subscriptions/resolve',
             method: 'POST',
             headers: {
                 'x-ms-marketplace-token': marketPlaceToken,
@@ -50,13 +50,13 @@ class AzureApi {
 
     getSubscriptionById(id) {
         return this._call({
-            endpoint: `/subscriptions/${id}`,
+            endpoint: `/saas/subscriptions/${id}`,
         });
     }
 
     activateSubscriptionById(id, planId) {
         return this._call({
-            endpoint: `/subscriptions/${id}/activate`,
+            endpoint: `/saas/subscriptions/${id}/activate`,
             method: 'POST',
             body: {
                 planId,
@@ -64,10 +64,20 @@ class AzureApi {
         });
     }
 
+    publishUsage(usage) {
+        return this._call({
+            endpoint: `/usageEvent`,
+            method: 'POST',
+            body: {
+                usage,
+            },
+        });
+    }
+
     //TODO: add work with pagination
     async getAllSubscriptions() {
         const { subscriptions } = await this._call({
-            endpoint: `/subscriptions`,
+            endpoint: `/saas/subscriptions`,
         });
 
         return subscriptions;

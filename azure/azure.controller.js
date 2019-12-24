@@ -21,6 +21,16 @@ class AzureController {
         }
         response.send('ok');
     }
+
+    async publishUsage(request, response) {
+        const {
+            resourceId, quantity, dimension, planId
+        } = request.body;
+        const result = await azureLogic.publishUsage({
+            resourceId, quantity, dimension, planId
+        });
+        response.send(result);
+    }
 }
 
 module.exports = AzureController;

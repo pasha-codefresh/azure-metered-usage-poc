@@ -11,6 +11,12 @@ const PACK_MAPPING = {
 const AZURE_LOGIN_IDP_NAME = 'azure';
 
 class AzureLogic {
+
+    async publishUsage(usage) {
+        const api = await AzureApi.getInstance();
+        return api.publishUsage(usage)
+    }
+
     async syncUserPackages(userId) {
         const api = await AzureApi.getInstance();
         const data = await api.getAllSubscriptions();

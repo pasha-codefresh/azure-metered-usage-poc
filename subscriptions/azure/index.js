@@ -1,7 +1,7 @@
 const AzureApi = require('../../azure/azure.api');
 const AzureLogic = require('../../azure/azure.logic');
 const _ = require('lodash');
-const AzureStatus = require('../../azure/azure.status');
+const AzureStatus = require('../../     azure/azure.status');
 
 class AzureSubscriptionEventsWebhook {
     async changePlan(data) {
